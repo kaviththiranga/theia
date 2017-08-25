@@ -1,0 +1,68 @@
+{
+    // comment
+    "tasks": [
+        {
+            "label": "test task",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "./task",
+                "args": [
+                    "test"
+                ],
+                "options": {}
+            },
+            "windowsProcessOptions": {
+                "command": "cmd.exe",
+                "args": [
+                    "/c",
+                    "task.bat",
+                    "abc"
+                ]
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "long running test task",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "./task-long-running",
+                "args": [],
+                "options": {}
+            },
+            "windowsProcessOptions": {
+                "command": "cmd.exe",
+                "args": [
+                    "/c",
+                    "task-long-running.bat",
+                    "abc"
+                ]
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "list all files",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "ls",
+                "args": [
+                    "-alR",
+                    "/"
+                ]
+            },
+            "windowsProcessOptions": {
+                "command": "cmd.exe",
+                "args": [
+                    "/c",
+                    "dir"
+                ]
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        }
+    ]
+}

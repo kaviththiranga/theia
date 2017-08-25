@@ -10,6 +10,7 @@ import * as stream from 'stream';
 import { ILogger } from '@theia/core/lib/common';
 import { Process } from './process';
 import { ProcessManager } from './process-manager';
+import * as child from 'child_process';
 
 const pty = require("node-pty");
 
@@ -17,7 +18,7 @@ export const TerminalProcessOptions = Symbol("TerminalProcessOptions");
 export interface TerminalProcessOptions {
     command: string,
     args?: string[],
-    options?: object
+    options?: child.SpawnOptions
 }
 
 export const TerminalProcessFactory = Symbol("TerminalProcessFactory");

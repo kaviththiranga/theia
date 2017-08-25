@@ -16,7 +16,7 @@ export const RawProcessOptions = Symbol("RawProcessOptions");
 export interface RawProcessOptions {
     command: string,
     args?: string[],
-    options?: object
+    options?: child.SpawnOptions
 }
 
 export const RawProcessFactory = Symbol("RawProcessFactory");

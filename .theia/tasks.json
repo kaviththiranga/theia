@@ -1,0 +1,128 @@
+{
+    // comment
+    "tasks": [
+        {
+            "label": "[workspace] long runnning test task (~300s)",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "./task-long-running",
+                "args": []
+            },
+            "windowsProcessOptions": {
+                "command": "cmd.exe",
+                "args": [
+                    "/c",
+                    "task-long-running.bat"
+                ]
+            },
+            "cwd": "$workspace/packages/task/src/node/test-resources/",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "[workspace] short runnning test task (~3s)",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "./task",
+                "args": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            "windowsProcessOptions": {
+                "command": "cmd.exe",
+                "args": [
+                    "/c",
+                    "task.bat",
+                    "abc"
+                ]
+            },
+            "cwd": "$workspace/packages/task/src/node/test-resources/",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "[workspace] recursively list files from workspace root",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "ls",
+                "args": [
+                    "-alR"
+                ]
+            },
+            "windowsProcessOptions": {
+                "command": "cmd.exe",
+                "args": [
+                    "/c",
+                    "dir",
+                    "/s"
+                ]
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "[workspace] theia tsc watch in terminal",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "yarn",
+                "args": [
+                    "run",
+                    "watch"
+                ]
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "tsc",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "[workspace] theia tsc watch no terminal",
+            "processType": "raw",
+            "processOptions": {
+                "command": "yarn",
+                "args": [
+                    "run",
+                    "watch"
+                ]
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "tsc",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "[workspace] raw command that doesn't exists",
+            "processType": "raw",
+            "processOptions": {
+                "command": "thisisnotacommand",
+                "args": []
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "[workspace] terminal command that doesn't exists",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "thisisnotacommand",
+                "args": []
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        },
+        {
+            "label": "[workspace] Echo a string",
+            "processType": "terminal",
+            "processOptions": {
+                "command": "bash",
+                "args": ["-c", "echo 1 2 3"]
+            },
+            "cwd": "$workspace",
+            "errorMatcherName": "",
+            "errorMatcherOptions": ""
+        }
+    ]
+}
