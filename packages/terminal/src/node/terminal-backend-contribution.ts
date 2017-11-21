@@ -56,7 +56,7 @@ export class TerminalBackendContribution implements BackendApplicationContributi
             });
             ws.on('close', (msg: any) => {
                 if (term !== undefined) {
-                    this.processManager.delete(term);
+                    this.processManager.unregister(term);
                     term = undefined;
                 }
             });

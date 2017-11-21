@@ -86,6 +86,7 @@ export class TerminalProcess extends Process {
     kill(signal?: string) {
         if (this.killed === false) {
             this.terminal.kill(signal);
+            this.processManager.unregister(this);
         }
     }
 

@@ -29,16 +29,24 @@ export class ProcessManager implements BackendApplicationContribution {
         return id;
     }
 
-    get(id: number): Process | undefined {
-        return this.processes.get(id);
+    /**
+     * Removes the process from this process manager. Invoking this method, will make
+     * sure that the process is terminated before eliminating it from the manager's cache.
+     *
+     * @param process the process to unregister from this process manager.
+     */
+    unregister(process: Process): void {
+        if (!process.killed) {
+            process.kill();
+            return;
+        }
+        if (this.processes.delete(process.id)) {
+            this.deleteEmitter.fire(process.id);
+        }
     }
 
-    delete(process: Process): void {
-        process.kill();
-        if (!this.processes.delete(process.id)) {
-            this.logger.warn(`The process was not registered via this manager. Anyway, we terminate your process. PID: ${process.pid}.`);
-        }
-        this.deleteEmitter.fire(process.id);
+    get(id: number): Process | undefined {
+        return this.processes.get(id);
     }
 
     get onDelete(): Event<number> {
@@ -48,7 +56,7 @@ export class ProcessManager implements BackendApplicationContribution {
     onStop?(): void {
         for (const process of this.processes.values()) {
             try {
-                this.delete(process);
+                this.unregister(process);
             } catch (error) {
                 this.logger.error(`Error occurred when terminating process. PID: ${process.pid}.`, error);
             }
